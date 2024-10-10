@@ -87,7 +87,7 @@ label {
     font-size: large;
 }
 
-.show-phrase-button {
+.updateBtn {
     background-color: #45a049;
-    margin-left: 50px;
+    margin-left: 10px;
 }

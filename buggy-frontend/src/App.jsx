@@ -16,21 +16,19 @@ function App() {
     .catch((err) => {
       console.log(err);
     })
-  }
+  };
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/user')
-      .then((res) => {
+  // useEffect(() => {
+  //   axios.get('http://localhost:3000/user')
+  //     .then((res) => {
 
-        console.log('res from App', res);
-        setUser(res.data.user)
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }, []);
-
-
+  //       console.log('res from App', res);
+  //       setUser(res.data.user)
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  // }, []);
 
   return (
     <>

@@ -28,27 +28,27 @@ const Register = ({ user, setUser }) => {
 		console.log('submitting form..')
 		e.preventDefault();
 		const { name, email, password, confirmPassword } = userForm;
-		if (!USER_REGEX.test(name)) {
-			console.log(1)
-			setNameError('Name has to be between 3 characters and 23 characters and only include letters');
-			return;
-		}
-		if (password.length < 8 || password.length > 24) {
-			console.log(2)
-			setPasswordError('Password must be between 8 and 24 characters');
-			return;
-		}
+		// if (!USER_REGEX.test(name)) {
+		// 	console.log(1)
+		// 	setNameError('Name has to be between 3 characters and 23 characters and only include letters');
+		// 	return;
+		// }
+		// if (password.length < 8 || password.length > 24) {
+		// 	console.log(2)
+		// 	setPasswordError('Password must be between 8 and 24 characters');
+		// 	return;
+		// }
 
-		if (email.length < 3 || !email.includes('@')) {
-			console.log(3)
-			setEmailError('Please provide a valid email addresss');
-			return;
-		}
-		if (password !== confirmPassword) {
-			console.log(4)
-			setPasswordError('Passwords do not match');
-			return;
-		}
+		// if (email.length < 3 || !email.includes('@')) {
+		// 	console.log(3)
+		// 	setEmailError('Please provide a valid email addresss');
+		// 	return;
+		// }
+		// if (password !== confirmPassword) {
+		// 	console.log(4)
+		// 	setPasswordError('Passwords do not match');
+		// 	return;
+		// }
 
 		setNameError("")
 		setEmailError("")

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
+import * as styles from '../BuggyStyles.module.css';
 
 const Home = ({ user, setUser }) => {
 	const [phrase, setPhrase] = useState('');
@@ -21,31 +22,31 @@ const Home = ({ user, setUser }) => {
 					setUser({...user, phrase});
 				}
 			}).catch((err) => {
+				//TODO: REMOVE SETUSER LINE once cookie issue is fixed
 				setUser({...user, phrase});
 				console.log(err);
 			})
 	}
 
 	useEffect(() => {
+		console.log('running...', user)
 		if (divRef.current && user.name) {
-			divRef.current.append = `Your phrase is ${user.phrase}`;
+			divRef.current.innerHTML = `Your phrase is ${user.phrase}</p>`
 		}
 	}, [user])
 
-	console.log('phrase', phrase)
+
 	// ref allows us to grab the element object
 	// element.append, element.innerHTML = , element
 	return (
 		<>
 			<h1>Welcome {user.name}</h1>
-	
-			<div ref={divRef}></div>
-
+			<div ref={divRef}>Your phrase is:</div>
 			<p>Change phrase</p>
 			<form onSubmit={updatePhrase}>
 				<label>New phrase: </label>
 				<input name="phrase" value={phrase} onChange={(e)=>{setPhrase(e.target.value)}}/>
-				<button type="submit">Update phrase</button>
+				<button type="submit" className={styles.updateBtn}>Update phrase</button>
 			</form>
 
 

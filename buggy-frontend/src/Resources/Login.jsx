@@ -14,14 +14,14 @@ const Login = ({ user, setUser }) => {
 
 	const loginUser = (e) => {
 		e.preventDefault();
-		if(!email.length || !email.includes('@')) {
-			setEmailError('Please insert a valid email');
-			return;
-		}
-		if(!password.length) {
-			setPasswordError('Please insert a valid password.');
-			return;
-		}
+		// if(!email.length || !email.includes('@')) {
+		// 	setEmailError('Please insert a valid email');
+		// 	return;
+		// }
+		// if(!password.length) {
+		// 	setPasswordError('Please insert a valid password.');
+		// 	return;
+		// }
 		setEmailError("")
 		setPasswordError("")
 		let data = {user: { email, password }}; 
@@ -52,7 +52,7 @@ const Login = ({ user, setUser }) => {
 			<form onSubmit={loginUser}>
 				<label>
 					Email:
-					<input type="email" name="email" onChange={(e) => setEmail(e.target.value)}/>
+					<input type="text" name="email" onChange={(e) => setEmail(e.target.value)}/>
 					{emailError && <p>{emailError}</p>}
 				</label>
 				<label>
