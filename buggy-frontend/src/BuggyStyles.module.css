@@ -1,0 +1,93 @@
+body {
+    background-color: darkslategrey;
+    display: flex;
+    justify-content: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #04AA6D;
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+    padding: 1em;
+
+}
+
+.nav-items {
+    margin-left: auto;
+}
+
+ul {
+    display: inline-flex;
+
+    li {
+        margin-right: 50px;
+    }
+}
+
+/* Style inputs */
+input[type=text],
+input[type=email],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgb(249, 246, 238);
+    color: black;
+}
+
+input[type=password],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: rgb(249, 246, 238);
+    color: black;
+}
+
+/* Style the submit button */
+input[type=submit] {
+    width: 100%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 25px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Add a background color to the submit button on mouse-over */
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+label {
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+.submitButton {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: large;
+}
+
+.show-phrase-button {
+    background-color: #45a049;
+    margin-left: 50px;
+}
