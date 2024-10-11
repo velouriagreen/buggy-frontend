@@ -21,34 +21,13 @@ const Register = ({ user, setUser }) => {
 	const [passwordError, setPasswordError] = useState('');
 
 	const handleChange = (e) => {
-		setUserForm({ ...userForm, [e.target.name]: e.target.value })
+		setUserForm({ ...userForm, [e.target.name]: e.target.value });
 	};
 
 	const registerUser = (e) => {
 		console.log('submitting form..')
 		e.preventDefault();
 		const { name, email, password, confirmPassword } = userForm;
-		// if (!USER_REGEX.test(name)) {
-		// 	console.log(1)
-		// 	setNameError('Name has to be between 3 characters and 23 characters and only include letters');
-		// 	return;
-		// }
-		// if (password.length < 8 || password.length > 24) {
-		// 	console.log(2)
-		// 	setPasswordError('Password must be between 8 and 24 characters');
-		// 	return;
-		// }
-
-		// if (email.length < 3 || !email.includes('@')) {
-		// 	console.log(3)
-		// 	setEmailError('Please provide a valid email addresss');
-		// 	return;
-		// }
-		// if (password !== confirmPassword) {
-		// 	console.log(4)
-		// 	setPasswordError('Passwords do not match');
-		// 	return;
-		// }
 
 		setNameError("")
 		setEmailError("")
@@ -60,17 +39,14 @@ const Register = ({ user, setUser }) => {
 				password
 			}
 		};
+
 		axios.post('http://localhost:3000/users', data)
 			.then(res => {
-				console.log('res', res);
 				if (res.data.message === `A user record for ${data.user.name} was created.`) {
 					setUser({ name, email });
 					navigate('/');
 				} else {
-					// Redirect the user back to the home page
 					setPasswordError(res.data.message);
-					// localStorage.setItem('csrfToken', res.data.csrfToken);
-
 				}
 			})
 	};

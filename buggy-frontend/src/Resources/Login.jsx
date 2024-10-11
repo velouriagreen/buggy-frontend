@@ -3,8 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-
-
 const Login = ({ user, setUser }) => {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState('');
@@ -14,21 +12,9 @@ const Login = ({ user, setUser }) => {
 
 	const loginUser = (e) => {
 		e.preventDefault();
-		// if(!email.length || !email.includes('@')) {
-		// 	setEmailError('Please insert a valid email');
-		// 	return;
-		// }
-		// if(!password.length) {
-		// 	setPasswordError('Please insert a valid password.');
-		// 	return;
-		// }
 		setEmailError("")
 		setPasswordError("")
 		let data = {user: { email, password }}; 
-		/**
-		 * res.data returns a promise. 
-		 * .then(res.data => { res.data.message })
-		 */
 		axios.post('http://localhost:3000/users/logon', data)
 			.then(res => {
 				console.log('message', res);

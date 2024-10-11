@@ -91,3 +91,10 @@ label {
     background-color: #45a049;
     margin-left: 10px;
 }
+
+.phrase {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+
+}

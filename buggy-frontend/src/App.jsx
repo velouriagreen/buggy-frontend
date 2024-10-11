@@ -18,17 +18,16 @@ function App() {
     })
   };
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:3000/user')
-  //     .then((res) => {
-
-  //       console.log('res from App', res);
-  //       setUser(res.data.user)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  // }, []);
+  useEffect(() => {
+    axios.get('http://localhost:3000/user', { withCredentials: true }) //Pass in cookies (which includes JWT token)
+      .then((res) => {
+        console.log('res from App', res);
+        setUser(res.data.user)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, []);
 
   return (
     <>
@@ -38,8 +37,7 @@ function App() {
         <ul>
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/register'>Register</Link></li>
-
-          {!user.name ? <Link to='/logon'>Login</Link> : <Link to="/logon" onClick={() =>{deleteUser()}}>Log Off</Link> }
+          {!user.name ? <Link to='/logon'>Login</Link> : <Link to="/register" onClick={() =>{deleteUser()}}>Log Off</Link> }
         </ul>
       </nav>
      </header>

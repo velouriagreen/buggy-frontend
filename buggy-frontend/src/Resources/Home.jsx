@@ -2,51 +2,48 @@ import React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import * as styles from '../BuggyStyles.module.css';
+import { useCookies } from 'react-cookie';
+
 
 const Home = ({ user, setUser }) => {
 	const [phrase, setPhrase] = useState('');
-
-	console.log('user', user);
+	const [cookies] = useCookies(['CSRF_TOKEN']);
 	const divRef = useRef(null);
-	// console.log('myRef', myRef);
-
 
 	const updatePhrase = (e) => {
 		e.preventDefault();
 		let data = { phrase };
-		axios.post('http://localhost:3000/user/update', data)
+		const headers = {
+			'X-CSRF-TOKEN': cookies['CSRF_TOKEN']
+		};
+		axios.post('http://localhost:3000/user/update', data, { withCredentials: true, headers: headers })
 			.then((res) => {
-				console.log('res', res);
-			
 				if(res.status === 200) {
 					setUser({...user, phrase});
 				}
 			}).catch((err) => {
-				//TODO: REMOVE SETUSER LINE once cookie issue is fixed
-				setUser({...user, phrase});
 				console.log(err);
 			})
-	}
+	};
 
 	useEffect(() => {
 		console.log('running...', user)
 		if (divRef.current && user.name) {
-			divRef.current.innerHTML = `Your phrase is ${user.phrase}</p>`
+			divRef.current.innerHTML = user.phrase === undefined || !user.phrase.length ? '<h3>Please create a phrase</h3>' : `<h3>Your phrase is ${user.phrase}<h3>`;
+			// divRef.current.dangerouslySetInnerHTML = !user.phrase.length ? `<h3>Please insert phrase</h3>` : `<h3>Your phrase is: ${user.phrase}</h3>`;
+			console.log('divRef', divRef.current)
 		}
 	}, [user])
 
-
-	// ref allows us to grab the element object
-	// element.append, element.innerHTML = , element
 	return (
 		<>
 			<h1>Welcome {user.name}</h1>
-			<div ref={divRef}>Your phrase is:</div>
-			<p>Change phrase</p>
+			<div ref={divRef} className={styles.phrase} />
+			{/* <div dangerouslySetInnerHTML={{__html: user.phrase}} ref={divRef} /> */}
 			<form onSubmit={updatePhrase}>
-				<label>New phrase: </label>
+				<label>Update Phrase: </label>
 				<input name="phrase" value={phrase} onChange={(e)=>{setPhrase(e.target.value)}}/>
-				<button type="submit" className={styles.updateBtn}>Update phrase</button>
+				<button type="submit" className={styles.updateBtn}>Submit</button>
 			</form>
 
 
