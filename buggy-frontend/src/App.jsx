@@ -18,17 +18,17 @@ function App() {
     })
   };
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:3000/user')
-  //     .then((res) => {
+  useEffect(() => {
+    axios.get('http://localhost:3000/user')
+      .then((res) => {
 
-  //       console.log('res from App', res);
-  //       setUser(res.data.user)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  // }, []);
+        console.log('res from App', res);
+        setUser(res.data.user)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, []);
 
   return (
     <>
@@ -38,7 +38,6 @@ function App() {
         <ul>
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/register'>Register</Link></li>
-
           {!user.name ? <Link to='/logon'>Login</Link> : <Link to="/logon" onClick={() =>{deleteUser()}}>Log Off</Link> }
         </ul>
       </nav>
